@@ -53,8 +53,8 @@ public class Hooks {
 
     @AfterStep
     public void captureScreenshotForFailedStep(Scenario scenario) {
-        log.info("After each step executed==>Capture a screenshot for failed step");
         if (scenario.isFailed()) {
+            log.info("After each step executed==>Capture a screenshot for failed step");
             scenario.attach(DriverFactory.getScreenshotByte(), "image/png", "Failure Screenshot");
         }
     }
