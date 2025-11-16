@@ -1,12 +1,9 @@
 package runner;
 
-import com.aventstack.chaintest.plugins.ChainTestCucumberListener;
-import driverfactory.DriverFactory;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.*;
-import utils.BrowserContext;
+import context.BrowserContext;
 
 @CucumberOptions (
     features = "src/test/resources/features",

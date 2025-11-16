@@ -138,8 +138,14 @@ public class ElementUtils {
     }
 
     public List<WebElement> waitForElementsVisibile(By locator, int timeout) {
+        log.info("Wait for elements to be visible :"+locator);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        List<WebElement> element = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+        List<WebElement> element;
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+        }catch(NoSuchElementException e){
+            throw new ElementException("Element is not found:" +locator);
+        }
         return element;
     }
 

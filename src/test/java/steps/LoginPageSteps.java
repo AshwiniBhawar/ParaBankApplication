@@ -3,11 +3,10 @@ package steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
-import utils.ScenarioContext;
+import context.ScenarioContext;
 
 public class LoginPageSteps {
     private LoginPage loginPage;
@@ -29,7 +28,7 @@ public class LoginPageSteps {
         Assert.assertEquals(scenarioContext.getContext("loginPageTitle"), loginPageTitle, "Login page title is not matching");
     }
 
-    @When("The user enters a username {string} and a password {string} in the textbox")
+    @Given("The user enters a username {string} and a password {string} in the textbox")
     public void The_user_enters_a_username_and_a_password_in_the_textbox(String username, String password) {
         scenarioContext.setContext("username", username);
         scenarioContext.setContext("password", password);

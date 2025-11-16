@@ -9,7 +9,8 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.RegistrationPage;
 import utilities.RandomNumUtil;
-import utils.ScenarioContext;
+import context.ScenarioContext;
+
 
 public class RegistrationPageSteps {
     private LoginPage loginPage;

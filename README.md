@@ -14,9 +14,9 @@ This framework automates a web application using Selenium WebDriver, Java, TestN
 
 ## Scenarios Automated
 
-a) Registration using diff users
+a) Registration for multiple users
 
-b) Login using valid  and invalid data
+b) Login for valid and invalid data
 
 c) In progress
 

@@ -1,7 +1,4 @@
-package utils;
-
-import java.util.HashMap;
-import java.util.Map;
+package context;
 
 public class BrowserContext {
     private static ThreadLocal<String> browser= new ThreadLocal<>();
