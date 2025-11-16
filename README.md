@@ -18,7 +18,8 @@ a) Registration for multiple users
 
 b) Login for valid and invalid data
 
-c) In progress
+c) Home Page:
+	1)Validate headers under "Account Services"
 
 ## Reports
 
