@@ -50,13 +50,13 @@ public class RegistrationPageSteps {
 
     @When("The user enters {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
     public void the_user_enters(String fName, String lName, String address, String city, String state, String zipCode, String phone, String ssn, String username, String password, String confirmPass) {
-        scenarioContext.setContext("username", password+RandomNumUtil.getNumber());
+        scenarioContext.setContext("username", username+RandomNumUtil.getNumber());
         String updatedUserName= scenarioContext.getContext("username");
         regiPage.fillTheRegistrationForm(fName, lName, address, city, state, zipCode, phone, ssn, updatedUserName, password, confirmPass);
     }
 
-    @And("The user click on register link")
-    public void the_user_click_on_register_link() {
+    @And("The user clicks on register link")
+    public void the_user_clicks_on_register_link() {
         homePage=regiPage.clickRegisterLink();
     }
 

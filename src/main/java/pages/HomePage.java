@@ -25,6 +25,7 @@ public class HomePage {
     private final static By firstMsgLoc=By.xpath("//div[@id='rightPanel']/h1");
     private final static By secondMsgLoc=By.xpath("//div[@id='rightPanel']/p");
     private final static By headersList= By.xpath("//div[@id='leftPanel']//ul//a");
+    private final By openNewAccountLink=By.xpath("//a[text()='Open New Account']");
 
     public String welcomeMsg(){
         return eUtil.waitForElementText(firstMsgLoc, AppConstants.DEFAULT_LONG_WAIT);
@@ -45,5 +46,10 @@ public class HomePage {
             headers.add(e.getText());
         }
         return headers;
+    }
+
+    public OpenAccountPage clickOpenNewAccountLink(){
+        eUtil.waitForElementClick(openNewAccountLink,AppConstants.DEFAULT_MEDIUM_WAIT);
+        return new OpenAccountPage(driver);
     }
 }

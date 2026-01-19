@@ -20,19 +20,15 @@ public class HomePageSteps {
          this.scenarioContext=scenarioContext;
      }
 
-    @Given("The user logins the application with a username {string} and a password {string}")
-    public void The_user_enters_a_username_and_a_password_in_the_textbox(String username, String password) {
-        homePage=loginPage.performLogin(username, password);
-    }
-
     @When("The user fetches the list of headers under Account Services")
     public void The_user_fetches_the_list_of_headers_under_Account_Services() {
+      homePage=scenarioContext.getContext("HOME_PAGE");
       List<String> headersList=homePage.getAccountServicesHeadersList();
       scenarioContext.setContext("headersList",headersList);
     }
 
-    @Then("The headers list is should be")
-    public void The_headers_list_is_should_be(DataTable data) {
+    @Then("The headers list should be")
+    public void The_headers_list_should_be(DataTable data) {
          List<String> actualHeaders=scenarioContext.getContext("headersList");
          List<String> expectedHeaders = data.asList();
          System.out.println("Actual headers list: " +actualHeaders);

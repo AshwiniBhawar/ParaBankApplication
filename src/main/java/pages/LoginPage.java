@@ -1,6 +1,7 @@
 package pages;
 
 import constants.AppConstants;
+import context.ScenarioContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -27,6 +28,7 @@ public class LoginPage {
     public String getLoginPageTitle(){
         return eUtil.getPageTitle();
     }
+
 	public HomePage performLogin(String username, String password) {
 		eUtil.waitForElementVisibile(usernameLoc, AppConstants.DEFAULT_MEDIUM_WAIT).sendKeys(username);
 		eUtil.waitForElementVisibile(passwordLoc, AppConstants.DEFAULT_MEDIUM_WAIT).sendKeys(password);

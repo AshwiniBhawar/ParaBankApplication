@@ -8,7 +8,7 @@ import context.BrowserContext;
 @CucumberOptions (
     features = "src/test/resources/features",
     glue = "steps",
-    tags = "@login",
+    tags = "@wip",
     plugin = {
                 "pretty",
                 "html:target/CucumberReport/cucumber-report.html",

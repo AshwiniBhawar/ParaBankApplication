@@ -28,11 +28,12 @@ public class LoginPageSteps {
         Assert.assertEquals(scenarioContext.getContext("loginPageTitle"), loginPageTitle, "Login page title is not matching");
     }
 
-    @Given("The user enters a username {string} and a password {string} in the textbox")
-    public void The_user_enters_a_username_and_a_password_in_the_textbox(String username, String password) {
+    @Given("The user logins the application with a username {string} and a password {string}")
+    public void The_user_logins_the_application_with_a_username_and_a_password_in_the_textbox(String username, String password) {
         scenarioContext.setContext("username", username);
         scenarioContext.setContext("password", password);
         homePage=loginPage.performLogin(username, password);
+        scenarioContext.setContext("HOME_PAGE", homePage);
     }
 
     @And("The user fetches the home page title")

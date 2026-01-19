@@ -262,4 +262,32 @@ public class ElementUtils {
             throw new ElementException("Element not found on the page- with locator :" + withLocator+ "near locator :"+nearLocator);
         }
     }
+
+    /********************************************Select Dropdown*************************************/
+
+    public Select selectDropdown(By locator, int timeout){
+        log.info("Wait for element to be visible :" + locator);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        Select select;
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            select= new Select(element);
+        } catch (TimeoutException e) {
+            log.error("Element not found on the page: " + locator);
+            throw new ElementException("Element not found on the page: " + locator);
+        }
+        return select;
+    }
+    public void selectElementByIndex(By locator, int timeout, int index){
+        selectDropdown(locator,timeout).selectByIndex(index);
+    }
+
+    public void selectElementByValue(By locator, int timeout, String value){
+        selectDropdown(locator, timeout).selectByValue(value);
+    }
+
+    public void selectElementByVisibleText(By locator, int timeout, String visibleText){
+        selectDropdown(locator, timeout).selectByVisibleText(visibleText);
+    }
+
 }

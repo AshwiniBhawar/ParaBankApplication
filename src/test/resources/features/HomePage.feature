@@ -1,10 +1,12 @@
 Feature: Account Overview Validation for ParaBank application
 
-  @wip
+  Background:
+    Given The user logins the application with a username "raj.thakur04" and a password "rajthakur1234"
+
+  @functional
   Scenario:Validate the Account Services on Account Overview page
-    Given The user logins the application with a username "raj.kashyap" and a password "rajkashyap232"
     When The user fetches the list of headers under Account Services
-    Then The headers list is should be
+    Then The headers list should be
       | Open New Account    |
       | Accounts Overview   |
       | Transfer Funds      |
