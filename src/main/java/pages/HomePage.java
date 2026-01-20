@@ -26,6 +26,7 @@ public class HomePage {
     private final static By secondMsgLoc=By.xpath("//div[@id='rightPanel']/p");
     private final static By headersList= By.xpath("//div[@id='leftPanel']//ul//a");
     private final By openNewAccountLink=By.xpath("//a[text()='Open New Account']");
+    private final By transferFundsLink= By.xpath("//a[text()='Transfer Funds']");
 
     public String welcomeMsg(){
         return eUtil.waitForElementText(firstMsgLoc, AppConstants.DEFAULT_LONG_WAIT);
@@ -51,5 +52,10 @@ public class HomePage {
     public OpenAccountPage clickOpenNewAccountLink(){
         eUtil.waitForElementClick(openNewAccountLink,AppConstants.DEFAULT_MEDIUM_WAIT);
         return new OpenAccountPage(driver);
+    }
+
+    public TransferFundsPage clickTransferFundsLink(){
+        eUtil.waitForElementClick(transferFundsLink,AppConstants.DEFAULT_MEDIUM_WAIT);
+        return new TransferFundsPage(driver);
     }
 }

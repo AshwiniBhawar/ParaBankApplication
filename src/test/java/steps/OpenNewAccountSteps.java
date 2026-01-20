@@ -51,6 +51,5 @@ public class OpenNewAccountSteps {
        Assert.assertEquals(succMsg, "Account Opened!\n" +
                "Congratulations, your account is now open.\n" +
                "Your new account number: "+newAccountNum, "The account open success message mismatch");
-       System.out.println(succMsg);
     }
 }

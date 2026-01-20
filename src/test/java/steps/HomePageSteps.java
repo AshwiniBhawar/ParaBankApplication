@@ -18,11 +18,11 @@ public class HomePageSteps {
      public HomePageSteps(Hooks hooks, ScenarioContext scenarioContext){
          this.loginPage=hooks.getLoginPage();
          this.scenarioContext=scenarioContext;
+         homePage=scenarioContext.getContext("HOME_PAGE");
      }
 
     @When("The user fetches the list of headers under Account Services")
     public void The_user_fetches_the_list_of_headers_under_Account_Services() {
-      homePage=scenarioContext.getContext("HOME_PAGE");
       List<String> headersList=homePage.getAccountServicesHeadersList();
       scenarioContext.setContext("headersList",headersList);
     }

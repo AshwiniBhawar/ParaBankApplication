@@ -279,14 +279,17 @@ public class ElementUtils {
         return select;
     }
     public void selectElementByIndex(By locator, int timeout, int index){
+        log.info("Select the element at index:" +index);
         selectDropdown(locator,timeout).selectByIndex(index);
     }
 
     public void selectElementByValue(By locator, int timeout, String value){
+        log.info("Select the element by value:" +value);
         selectDropdown(locator, timeout).selectByValue(value);
     }
 
     public void selectElementByVisibleText(By locator, int timeout, String visibleText){
+        log.info("Select the element by visible text:" +visibleText);
         selectDropdown(locator, timeout).selectByVisibleText(visibleText);
     }
 
