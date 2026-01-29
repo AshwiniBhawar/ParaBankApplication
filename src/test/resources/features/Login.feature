@@ -9,3 +9,4 @@ Feature: Login to the ParaBank application
     Then The home page title should be "ParaBank | Accounts Overview"
     Then The user successfully logged out and navigate to login page having title "ParaBank | Welcome | Online Banking"
 
+ #username, password details needs to be updated

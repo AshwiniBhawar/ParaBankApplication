@@ -16,3 +16,5 @@ Feature: Account Overview Validation for ParaBank application
       | Request Loan        |
       | Log Out             |
     Then The user successfully logged out and navigate to login page having title "ParaBank | Welcome | Online Banking"
+
+#username, password details needs to be updated

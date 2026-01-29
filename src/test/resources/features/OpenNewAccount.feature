@@ -39,3 +39,5 @@ Feature: Open New Account Validation for ParaBank application
     And The user navigates to "Accounts Overview" page
     Then The new opened account is listed under account overview having account number and balance as "$90.00" and available amount as "$90.00"
     Then The user successfully logged out and navigate to login page having title "ParaBank | Welcome | Online Banking"
+
+#username, password, account number, amount, and transaction date details needs to be updated- These details are user specific

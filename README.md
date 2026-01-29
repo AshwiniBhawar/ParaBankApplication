@@ -14,12 +14,13 @@ This framework automates a web application using Selenium WebDriver, Java, TestN
 
 ## Scenarios Automated
 
-a) Registration for multiple users
-
-b) Login for valid and invalid data
-
-c) Home Page:
-	1)Validate headers under "Account Services"
+a)Registration for multiple users
+b)Login for valid and invalid data
+c)Home page headers validation
+d)Bill payment
+e)Open new account
+f)Transfer fund from one account to another
+e)Update contact information
 
 ## Reports
 

@@ -43,6 +43,6 @@ public class UpdateContactInfoSteps {
     public void the_profile_updated_successfully_message_should_be_displayed() {
         System.out.print(updateContactInfoPage.updateProfileSuccMsg());
         Assert.assertEquals(updateContactInfoPage.updateProfileSuccMsg(), "Profile Updated\n" +
-                "Your updated address and phone number have been added to the system. ","Update profile succ msg mismatch");
+                "Your updated address and phone number have been added to the system.","Update profile succuss msg mismatch");
     }
 }

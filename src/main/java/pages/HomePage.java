@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utilities.ElementUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +29,7 @@ public class HomePage {
     private final By accountsOverviewLink= By.xpath("//a[text()='Accounts Overview']");
     private final By clickLogOutLink= By.xpath("//a[text()='Log Out']");
     private final By updateContactInfoLink= By.xpath("//a[text()='Update Contact Info']");
+    private final By billPayLink= By.xpath("//a[text()='Bill Pay']");
 
     public String welcomeMsg(){
         return eUtils.waitForElementText(firstMsgLoc, AppConstants.DEFAULT_LONG_WAIT);
@@ -76,6 +76,11 @@ public class HomePage {
         eUtils.waitForElementClick(updateContactInfoLink,AppConstants.DEFAULT_MEDIUM_WAIT);
         return new UpdateContactInfoPage(driver);
     }
+    public BillPayPage clickBillPayLink(){
+        eUtils.waitForElementClick(billPayLink,AppConstants.DEFAULT_MEDIUM_WAIT);
+        return new BillPayPage(driver);
+    }
+
 
 
 }

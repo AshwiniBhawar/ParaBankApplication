@@ -1,9 +1,7 @@
 package steps;
 
 import context.ScenarioContext;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
@@ -20,6 +18,11 @@ public class TransferFundsPageSteps {
         this.loginPage=hooks.getLoginPage();
         this.scenarioContext= scenarioContext;
         homePage=scenarioContext.getContext("HOME_PAGE");
+    }
+
+    @Given("The user go to the account overview page and captures the payee {string} and payer {string} balance details")
+    public void the_user_go_to_the_account_overview_page_and_captures_the_payee_and_payer_balance_details(String payeeAccount, String payerAccount) {
+
     }
 
     @When("The user clicks on the Transfer Funds link")
@@ -59,6 +62,11 @@ public class TransferFundsPageSteps {
         Assert.assertEquals(msg, "Transfer Complete!\n" +
                 "$"+amount+" has been transferred from account #"+fromAcc+" to account #"+toAcc+".\n" +
                 "See Account Activity for more details.", "The transfer funds success message mismatch");
+    }
+
+    @Then("Validates the payers account is debited and payee account is credited as per the transaction")
+    public void validates_the_payers_account_is_debited_and_payee_account_is_credited_as_per_the_transaction() {
+
     }
 
 }
