@@ -16,11 +16,11 @@ public class ScenarioContext {
         }
 
         public boolean contains(String key){
-        return context.containsKey(key);
+            return context.containsKey(key);
         }
 
-         public void clear(){
-        context.clear();
-    }
+        public void clear(){
+            context.clear();
+        }
 }
 

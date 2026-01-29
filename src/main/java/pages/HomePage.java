@@ -13,13 +13,13 @@ import java.util.List;
 
 public class HomePage {
     private WebDriver driver;
-    private ElementUtils eUtil;
+    private ElementUtils eUtils;
 
     private static final Logger log= LogManager.getLogger(HomePage.class);
 
     public HomePage(WebDriver driver) {
         this.driver=driver;
-        eUtil= new ElementUtils(driver);
+        eUtils= new ElementUtils(driver);
     }
 
     private final static By firstMsgLoc=By.xpath("//div[@id='rightPanel']/h1");
@@ -27,22 +27,25 @@ public class HomePage {
     private final static By headersList= By.xpath("//div[@id='leftPanel']//ul//a");
     private final By openNewAccountLink=By.xpath("//a[text()='Open New Account']");
     private final By transferFundsLink= By.xpath("//a[text()='Transfer Funds']");
+    private final By accountsOverviewLink= By.xpath("//a[text()='Accounts Overview']");
+    private final By clickLogOutLink= By.xpath("//a[text()='Log Out']");
+    private final By updateContactInfoLink= By.xpath("//a[text()='Update Contact Info']");
 
     public String welcomeMsg(){
-        return eUtil.waitForElementText(firstMsgLoc, AppConstants.DEFAULT_LONG_WAIT);
+        return eUtils.waitForElementText(firstMsgLoc, AppConstants.DEFAULT_LONG_WAIT);
     }
 
     public String accountCreationMsg(){
-        return eUtil.waitForElementText(secondMsgLoc, AppConstants.DEFAULT_LONG_WAIT);
+        return eUtils.waitForElementText(secondMsgLoc, AppConstants.DEFAULT_LONG_WAIT);
     }
 
     public String getHomePageTitle(){
-        return eUtil.getPageTitle();
+        return eUtils.getPageTitle();
     }
 
     public List<String> getAccountServicesHeadersList(){
         List<String> headers= new ArrayList<String>();
-        List<WebElement> eleList= eUtil.waitForElementsVisibile(headersList, AppConstants.DEFAULT_LONG_WAIT);
+        List<WebElement> eleList= eUtils.waitForElementsVisibile(headersList, AppConstants.DEFAULT_LONG_WAIT);
         for(WebElement e:eleList){
             headers.add(e.getText());
         }
@@ -50,12 +53,29 @@ public class HomePage {
     }
 
     public OpenAccountPage clickOpenNewAccountLink(){
-        eUtil.waitForElementClick(openNewAccountLink,AppConstants.DEFAULT_MEDIUM_WAIT);
+        eUtils.waitForElementClick(openNewAccountLink,AppConstants.DEFAULT_MEDIUM_WAIT);
         return new OpenAccountPage(driver);
     }
 
     public TransferFundsPage clickTransferFundsLink(){
-        eUtil.waitForElementClick(transferFundsLink,AppConstants.DEFAULT_MEDIUM_WAIT);
+        eUtils.waitForElementClick(transferFundsLink,AppConstants.DEFAULT_MEDIUM_WAIT);
         return new TransferFundsPage(driver);
     }
+
+    public AccountsOverviewPage clickAccountOverviewLink(){
+        eUtils.waitForElementClick(accountsOverviewLink,AppConstants.DEFAULT_MEDIUM_WAIT);
+        return new AccountsOverviewPage(driver);
+    }
+
+    public LoginPage clickLogOutLink(){
+        eUtils.waitForElementClick(clickLogOutLink,AppConstants.DEFAULT_LONG_WAIT);
+        return new LoginPage(driver);
+    }
+
+    public UpdateContactInfoPage clickUpdateContactInfoLink(){
+        eUtils.waitForElementClick(updateContactInfoLink,AppConstants.DEFAULT_MEDIUM_WAIT);
+        return new UpdateContactInfoPage(driver);
+    }
+
+
 }

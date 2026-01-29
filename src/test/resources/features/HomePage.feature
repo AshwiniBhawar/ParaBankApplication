@@ -1,7 +1,7 @@
 Feature: Account Overview Validation for ParaBank application
 
   Background:
-    Given The user logins the application with a username "raj.thakur04" and a password "rajthakur1234"
+    Given The user logins the application with a username "raj.thakur71" and a password "rajthakur1234"
 
   @functional
   Scenario:Validate the Account Services on Account Overview page
@@ -15,3 +15,4 @@ Feature: Account Overview Validation for ParaBank application
       | Update Contact Info |
       | Request Loan        |
       | Log Out             |
+    Then The user successfully logged out and navigate to login page having title "ParaBank | Welcome | Online Banking"

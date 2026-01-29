@@ -52,4 +52,11 @@ public class LoginPageSteps {
         Assert.assertTrue(loginPage.getInvalidLoginMsgResult(username, password, expectedMsg));
     }
 
+    @Then("The user successfully logged out and navigate to login page having title {string}")
+    public void The_user_successfully_logged_out_and_navigate_to_login_page_title(String title){
+        loginPage= homePage.clickLogOutLink();
+        Assert.assertEquals(loginPage.getLoginPageTitle(), title);
+    }
+
+
 }

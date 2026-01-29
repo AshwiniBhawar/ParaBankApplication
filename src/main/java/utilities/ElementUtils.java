@@ -108,6 +108,13 @@ public class ElementUtils {
         }
     }
 
+    public int waitForElementPresenceAndGetSize(By locator, int timeout) {
+        log.info("Wait for element to be present :"+locator);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        int size = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator)).size();
+        return size;
+    }
+
     public WebElement waitForElementPresence(By locator, int timeout) {
         log.info("Wait for element to be present :"+locator);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
@@ -131,7 +138,10 @@ public class ElementUtils {
         log.info("Wait for element to be visible :"+locator+ " send text :"+enterKeys);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         try{
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).sendKeys(enterKeys);
+        WebElement ele=wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        ele.click();
+        ele.clear();
+        ele.sendKeys(enterKeys);
         }catch(NoSuchElementException e){
             throw new ElementException("Element is not found:" +locator);
         }

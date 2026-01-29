@@ -8,7 +8,7 @@ import context.BrowserContext;
 @CucumberOptions (
     features = "src/test/resources/features",
     glue = "steps",
-    tags = "@wip",
+    tags = "@functional",
     plugin = {
                 "pretty",
                 "html:target/CucumberReport/cucumber-report.html",
@@ -20,12 +20,12 @@ import context.BrowserContext;
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 
-    private static ThreadLocal<String> tlBrowser= new ThreadLocal<>();
+    //private static ThreadLocal<String> tlBrowser= new ThreadLocal<>();
 
     @Parameters("browser")
     @BeforeMethod(alwaysRun = true)
     public void setUpBrowser(@Optional("chrome") String browser){
-        tlBrowser.set(browser);  //store browser name in ThreadLocal
+        //tlBrowser.set(browser);  //store browser name in ThreadLocal
         BrowserContext.setBrowser(browser); //pass it to hooks
     }
 

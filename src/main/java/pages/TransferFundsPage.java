@@ -27,24 +27,31 @@ public class TransferFundsPage {
     private final By transferSuccMsg= By.id("showResult");
 
     public String getTransferFundsTitle(){
-        return eUtils.waitForElementText(transferFundTitle, AppConstants.DEFAULT_MEDIUM_WAIT);
+        String title=eUtils.waitForElementText(transferFundTitle, AppConstants.DEFAULT_MEDIUM_WAIT);
+        log.info("The transfer funds title is :"+title);
+        return title;
     }
 
     public void enterAmount(String amount){
+        log.info("Enter the amount :"+amount);
         eUtils.waitForElementVisibileAndSendText(enterAmount, AppConstants.DEFAULT_MEDIUM_WAIT, amount);
     }
 
     public void enterAccountFromAndTo(String fromAcc, String toAcc){
+        log.info("Enter the from :"+fromAcc+ " and to :"+toAcc+ " account");
         eUtils.selectElementByValue(fromAccount, AppConstants.DEFAULT_MEDIUM_WAIT, fromAcc);
         eUtils.selectElementByValue(toAccount, AppConstants.DEFAULT_MEDIUM_WAIT, toAcc);
     }
 
     public void clickTransferBtn(){
+        log.info("Click on transfer button");
         eUtils.waitForElementClick(transferBtn, AppConstants.DEFAULT_MEDIUM_WAIT);
     }
 
     public String transferSuccMsg(){
-        return eUtils.waitForElementText(transferSuccMsg, AppConstants.DEFAULT_MEDIUM_WAIT);
+        String msg=eUtils.waitForElementText(transferSuccMsg, AppConstants.DEFAULT_MEDIUM_WAIT);
+        log.info("The transfer funds successful message is :"+msg);
+        return msg;
     }
 
 }

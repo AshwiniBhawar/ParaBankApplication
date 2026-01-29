@@ -14,7 +14,7 @@ Feature: Registration for ParaBank application
     When The user enters "<firstname>" "<lastname>" "<address>" "<city>" "<state>" "<zipcode>" "<phone>" "<ssn>" "<username>" "<password>" "<confirmpassword>"
     And The user clicks on register link
     When The user fetches the registration successful message
-    Then Registration should be successful with "Welcome" message and "Your account was created successfully. You are now logged in." message
+    Then Registration should be successful  with "Welcome" message and "Your account was created successfully. You are now logged in." message
 
   Examples:
     | firstname | lastname | address       | city   | state | zipcode | phone      | ssn       | username    | password       | confirmpassword |

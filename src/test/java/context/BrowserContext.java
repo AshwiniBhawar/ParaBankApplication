@@ -1,6 +1,7 @@
 package context;
 
 public class BrowserContext {
+
     private static ThreadLocal<String> browser= new ThreadLocal<>();
 
     public static String getBrowser() {
