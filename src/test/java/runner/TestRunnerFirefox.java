@@ -14,8 +14,8 @@ import org.testng.annotations.Parameters;
     tags = "@login",
     plugin = {
                 "pretty",
-                "html:target/cucumber-reports-firefox/cucumber-report-firefox.html",
-                "html:target/cucumber-reports-firefox/cucumber-report-firefox.json",
+                "html:target/cucumber-reports/cucumber-report-firefox.html",
+                "json:target/cucumber-reports/cucumber-report-firefox.json",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.chaintest.plugins.ChainTestCucumberListener:"
         },
@@ -25,11 +25,6 @@ import org.testng.annotations.Parameters;
 
 
 public class TestRunnerFirefox extends AbstractTestNGCucumberTests {
-
-    static{
-        System.setProperty("chaintest.output.dir", "target/chaintest/firefox" );
-        System.setProperty("allure.results.directory", "target/allure-results/firefox");
-    }
 
     @Parameters("browser")
     @BeforeMethod(alwaysRun = true)

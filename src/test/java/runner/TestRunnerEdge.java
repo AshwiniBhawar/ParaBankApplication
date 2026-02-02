@@ -11,8 +11,8 @@ import context.BrowserContext;
         tags = "@login",
         plugin = {
                 "pretty",
-                "html:target/cucumber-reports-edge/cucumber-report-edge.html",
-                "html:target/cucumber-reports-edge/cucumber-report-edge.json",
+                "html:target/cucumber-reports/cucumber-report-edge.html",
+                "json:target/cucumber-reports/cucumber-report-edge.json",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.chaintest.plugins.ChainTestCucumberListener:"
         },
@@ -22,11 +22,6 @@ import context.BrowserContext;
 
 
 public class TestRunnerEdge extends AbstractTestNGCucumberTests {
-
-    static{
-        System.setProperty("chaintest.output.dir", "target/chaintest/edge" );
-        System.setProperty("allure.results.directory", "target/allure-results/edge");
-    }
 
     @Parameters("browser")
     @BeforeMethod(alwaysRun = true)
