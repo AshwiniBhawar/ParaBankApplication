@@ -8,30 +8,37 @@ import context.BrowserContext;
 @CucumberOptions (
     features = "src/test/resources/features",
     glue = "steps",
-    tags = "@functional",
+    tags = "@login",
     plugin = {
                 "pretty",
-                "html:target/CucumberReport/cucumber-report.html",
+                "html:target/cucumber-reports-chrome/cucumber-report-chrome.html",
+                "html:target/cucumber-reports-chrome/cucumber-report-chrome.json",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.chaintest.plugins.ChainTestCucumberListener:"
         },
     monochrome = true,
     dryRun = false
 )
-public class TestRunner extends AbstractTestNGCucumberTests {
 
-    //private static ThreadLocal<String> tlBrowser= new ThreadLocal<>();
+
+public class TestRunnerChrome extends AbstractTestNGCucumberTests {
+
+    static{
+        System.setProperty("chaintest.output.dir", "target/chaintest/chrome" );
+        System.setProperty("allure.results.directory", "target/allure-results/chrome");
+    }
 
     @Parameters("browser")
-    @BeforeMethod(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     public void setUpBrowser(@Optional("chrome") String browser){
-        //tlBrowser.set(browser);  //store browser name in ThreadLocal
         BrowserContext.setBrowser(browser); //pass it to hooks
     }
 
-    @DataProvider(parallel=true)
+
     @Override
+    @DataProvider(parallel=false)
     public Object[][] scenarios(){
         return super.scenarios();
     }
+
 }

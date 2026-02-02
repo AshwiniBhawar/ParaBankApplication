@@ -21,13 +21,12 @@ public class OptionsManager {
 		co=new ChromeOptions();
         co.addArguments("--guest");
 		if(Boolean.parseBoolean(prop.getProperty("headless"))) {
-			co.addArguments("--headless");
+			co.addArguments("--headless=new");
 		}
 		
 		if(Boolean.parseBoolean(prop.getProperty("incognito"))) {
 			co.addArguments("--incognito");
-		} 
-		//co.setExperimentalOption("profile.default_content_setting_values.popups", 0);
+		}
 		return co;
 	}
 			
@@ -47,10 +46,10 @@ public class OptionsManager {
 		eo=new EdgeOptions();
         eo.addArguments("--guest");
 		if(Boolean.parseBoolean(prop.getProperty("headless"))) {
-			co.addArguments("--headless");
+			co.addArguments("--headless=new");
 		}
 		if(Boolean.parseBoolean(prop.getProperty("incognito"))) {
-			co.addArguments("--incognito");
+			co.addArguments("--inprivate");
 		}
 		return eo;
 	}

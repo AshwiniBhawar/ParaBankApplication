@@ -1,7 +1,6 @@
 package pages;
 
 import constants.AppConstants;
-import context.ScenarioContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
