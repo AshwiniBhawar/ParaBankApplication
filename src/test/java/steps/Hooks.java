@@ -1,5 +1,6 @@
 package steps;
 
+import com.aventstack.chaintest.plugins.ChainTestCucumberListener;
 import driverfactory.DriverFactory;
 import io.cucumber.java.*;
 import io.cucumber.java.Scenario;
@@ -42,6 +43,7 @@ public class Hooks {
         if(driver !=null) {
             driver.quit();
         }
+
         BrowserContext.removeBrowser();
         DriverFactory.tlDriver.remove();
     }

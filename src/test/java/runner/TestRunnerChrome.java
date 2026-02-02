@@ -11,8 +11,8 @@ import context.BrowserContext;
     tags = "@login",
     plugin = {
                 "pretty",
-                "html:target/cucumber-reports-chrome/cucumber-report-chrome.html",
-                "html:target/cucumber-reports-chrome/cucumber-report-chrome.json",
+                "html:target/cucumber-reports/cucumber-report-chrome.html",
+                "json:target/cucumber-reports/cucumber-report-chrome.json",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "com.aventstack.chaintest.plugins.ChainTestCucumberListener:"
         },
@@ -22,11 +22,6 @@ import context.BrowserContext;
 
 
 public class TestRunnerChrome extends AbstractTestNGCucumberTests {
-
-    static{
-        System.setProperty("chaintest.output.dir", "target/chaintest/chrome" );
-        System.setProperty("allure.results.directory", "target/allure-results/chrome");
-    }
 
     @Parameters("browser")
     @BeforeClass(alwaysRun = true)
