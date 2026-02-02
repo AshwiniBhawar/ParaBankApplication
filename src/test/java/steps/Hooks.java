@@ -34,7 +34,7 @@ public class Hooks {
         driver=df.initDriver(prop);
         loginPage= new LoginPage(driver);
 
-        scenario.log("Browser name: " + browserName);
+        scenario.log("Browser name is- " + browserName);
     }
 
     @After
