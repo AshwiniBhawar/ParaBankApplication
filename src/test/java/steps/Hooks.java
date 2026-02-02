@@ -27,7 +27,7 @@ public class Hooks {
         String browserName= BrowserContext.getBrowser();
 
         log.info("Browser name is- "+ browserName);
-        if(prop.getProperty("browser")==null || prop.getProperty("browser").isEmpty() ){
+        if(prop.getProperty("browser")==null || prop.getProperty("browser").isEmpty() || prop.getProperty("browser")!=null){
                 prop.setProperty("browser", browserName);
         }
 
