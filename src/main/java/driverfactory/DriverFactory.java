@@ -115,7 +115,7 @@ public class DriverFactory {
 		} catch (IOException e) {
 			throw new FrameworkException("Properties file is not successfully loaded");
 		}
-        log.info("Env name is: " + envName);
+        log.info("Env value is: " + envName);
 		return prop;
 	}
 
