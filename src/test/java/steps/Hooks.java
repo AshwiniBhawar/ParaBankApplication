@@ -25,16 +25,22 @@ public class Hooks {
         df= new DriverFactory();
         prop = df.initProp();
         String browserName= BrowserContext.getBrowser();
-
         log.info("Browser name is- "+ browserName);
-        if(prop.getProperty("browser")==null || prop.getProperty("browser").isEmpty() || prop.getProperty("browser")!=null){
-                prop.setProperty("browser", browserName);
+
+        if(browserName !=null){
+            log.info("Setting up property file browser value using provided parameter - "+ browserName);
+            prop.setProperty("browser", browserName);
+        }
+
+        else if(prop.getProperty("browser")==null || prop.getProperty("browser").isEmpty()){
+                log.info("Property file browser value is null, hence setting it to default value chrome.");
+                prop.setProperty("browser", "chrome");
         }
 
         driver=df.initDriver(prop);
         loginPage= new LoginPage(driver);
 
-        scenario.log("Browser name is- " + browserName);
+        scenario.log("TestNg browser parameter value is- " + browserName+ " and property file broswer contains value: "+prop.get("browser"));
     }
 
     @After

@@ -15,11 +15,17 @@ This framework automates a web application using Selenium WebDriver, Java, TestN
 ## Scenarios Automated
 
 a)Registration for multiple users
+
 b)Login for valid and invalid data
+
 c)Home page headers validation
+
 d)Bill payment
+
 e)Open new account
-f)Transfer fund from one account to another
+
+f)Transfer funds from one account to another
+
 e)Update contact information
 
 ## Reports
@@ -31,10 +37,10 @@ The report contains information on test cases executed, passed, failed, and skip
 
 2)./target/chaintest directory
 
-3)./target/cucumber-report directory
+3)./target/cucumber-reports directory
 
 ## Logs
-Logs are created during the test execution and stored in the ./logs/ directory.
+Logs are created during the test execution and stored in the ./target/logs/ directory.
 
 ## Instructions to run a test suite
 

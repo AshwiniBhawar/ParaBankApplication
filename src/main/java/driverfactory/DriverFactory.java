@@ -83,9 +83,9 @@ public class DriverFactory {
 		prop= new Properties();
 		FileInputStream fip=null;
 		String envName=System.getProperty("env");
-        log.info("Env name is: " + envName);
 		try {
-		if(envName==null) {
+		if(envName==null || envName.isEmpty()) {
+            envName="qa";
 			fip = new FileInputStream("./src/test/resources/config/config.qa.properties");
 		}
 		else {
@@ -115,7 +115,7 @@ public class DriverFactory {
 		} catch (IOException e) {
 			throw new FrameworkException("Properties file is not successfully loaded");
 		}
-		
+        log.info("Env name is: " + envName);
 		return prop;
 	}
 
