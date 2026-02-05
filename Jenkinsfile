@@ -27,7 +27,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/AshwiniBhawar/ParaBankApplication.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/chrometestng.xml -Denv=qa"
+                    bat "mvn test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/chrometestng.xml -Denv=qa"
                 }
             }
         }
@@ -48,7 +48,7 @@ pipeline
                steps {
                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                         git 'https://github.com/AshwiniBhawar/ParaBankApplication.git'
-                        bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/firefoxtestng.xml -Denv=qa"
+                        bat "mvn test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/firefoxtestng.xml -Denv=qa"
 					}
                }
          }
@@ -65,21 +65,23 @@ pipeline
                  }
         }
 
-         stage("Deploy to UAT"){
+
+        stage("Deploy to UAT"){
                   steps{
                          echo("deploy to UAT")
                   }
-         }
+        }
     }
 
     post {
             always {
-                echo 'Archiving cucumber reports logs jars and testng xml results'
-                testNG reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'
-                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-                archiveArtifacts artifacts: 'target/logs/*.log', followSymlinks: false
-                cucumber buildStatus: 'UNCHANGED', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/cucumber-report-chrome.json', jsonReportDirectory: 'target/cucumber-reports/', pendingStepsNumber: -1, reportTitle: 'Cucumber Chrome Json Report', skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
-                cucumber buildStatus: 'UNCHANGED', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/cucumber-report-firefox.json', jsonReportDirectory: 'target/cucumber-reports/', pendingStepsNumber: -1, reportTitle: 'Cucumber Firefox Json Report', skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
-            }
+				cucumber jsonReportDirectory: 'target/cucumber-reports/',
+                fileIncludePattern: 'cucumber-report-chrome.json',
+                reportTitle: 'QA Chrome Cucumber JSON Report'
+
+				cucumber jsonReportDirectory: 'target/cucumber-reports/',
+                fileIncludePattern: 'cucumber-report-firefox.json',
+                reportTitle: 'QA Firefox Cucumber JSON Report'
         }
+    }
 }
