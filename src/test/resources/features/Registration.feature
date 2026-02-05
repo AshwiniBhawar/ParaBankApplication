@@ -21,7 +21,7 @@ Feature: Registration for ParaBank application
     | Raj       | Thakur   | 1234 N Circle | Austin | Texas | 12345   | 9874563210 | ABC123456 | raj.thakur  | rajthakur1234  | rajthakur1234   |
     | Raj       | Kashyap  | 1234 N Circle | Austin | Texas | 12345   | 9874563210 | ABC123456 | raj.kashyap | rajkashyap1234 | rajkashyap1234  |
 
- @negative
+ @registrationnegative
   Scenario Outline: Complete a registration form using existing username for ParaBank application
     Given The user is on login page and clicks on register link
     When The user fetches the registration form title

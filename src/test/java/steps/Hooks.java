@@ -1,6 +1,5 @@
 package steps;
 
-import com.aventstack.chaintest.plugins.ChainTestCucumberListener;
 import driverfactory.DriverFactory;
 import io.cucumber.java.*;
 import io.cucumber.java.Scenario;
@@ -65,8 +64,13 @@ public class Hooks {
     @AfterStep
     public void captureScreenshotForFailedStep(Scenario scenario) {
         if (scenario.isFailed()) {
-            log.info("After each step executed==>Capture a screenshot for failed step");
+            log.info("Capture a screenshot for failed step");
             scenario.attach(DriverFactory.getScreenshotByte(), "image/png", "Failure Screenshot");
+        }
+
+        if(!scenario.isFailed()){
+            log.info("Capture a screenshot for success step");
+            scenario.attach(DriverFactory.getScreenshotByte(), "image/png", "Success Screenshot");
         }
     }
 }
