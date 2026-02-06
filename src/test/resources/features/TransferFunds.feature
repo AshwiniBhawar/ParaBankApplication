@@ -1,14 +1,14 @@
 Feature: Open New Account Validation for ParaBank application
 
   Background:
-    Given The user logins the application with a username "raj.thakur99" and a password "rajthakur1234"
+    Given The user logins the application with a username "raj.thakur33" and a password "rajthakur1234"
 
   @smoke @functional
   Scenario:Verify that user is able to transfer funds
     When The user clicks on the Transfer Funds link
     Then The transfer account page title should be "Transfer Funds"
     When The user enters  amount as "100.00"
-    And The user enters from account as "17007" and to as "17118"
+    And The user enters from account as "20226" and to as "20337"
     And The user clicks on transfer button
     Then The transfer is successful
     Then The user successfully logged out and navigate to login page having title "ParaBank | Welcome | Online Banking"
@@ -19,7 +19,7 @@ Feature: Open New Account Validation for ParaBank application
     When The user clicks on the Transfer Funds link
     Then The transfer account page title should be "Transfer Funds"
     When The user enters  amount as "10.00"
-    And The user enters from account as "17007" and to as "17118"
+    And The user enters from account as "20226" and to as "20337"
     And The user clicks on transfer button
     Then The transfer is successful
     When The user clicks on Account Overview page

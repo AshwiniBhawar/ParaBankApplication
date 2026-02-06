@@ -1,7 +1,7 @@
 Feature: Bill Pay validation for ParaBank application
 
   Background:
-    Given The user logins the application with a username "raj.thakur99" and a password "rajthakur1234"
+    Given The user logins the application with a username "raj.thakur33" and a password "rajthakur1234"
 
   @smoke @functional
   Scenario Outline::Verify that user is able to perform bill payment
@@ -14,7 +14,7 @@ Feature: Bill Pay validation for ParaBank application
 
     Examples:
       | payeeName | address         | city    | state | zipcode | phone      | account | verifyAcc | amount | fromAcc |
-      | krish     | 123 Main Street | NewYork | NY    | 10001   | 1234567890 | 17007   | 17007     | 10.00  | 17118   |
+      | krish     | 123 Main Street | NewYork | NY    | 10001   | 1234567890 | 20226   | 20226     | 10.00  | 20337   |
 
     #username, password, payer and payee account details needs to be updated- These details are user specific
 

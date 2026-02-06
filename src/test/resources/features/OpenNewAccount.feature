@@ -1,13 +1,13 @@
 Feature: Open New Account Validation for ParaBank application
 
   Background:
-  Given The user logins the application with a username "raj.thakur99" and a password "rajthakur1234"
+  Given The user logins the application with a username "raj.thakur33" and a password "rajthakur1234"
 
   @smoke @functional
   Scenario:Verify that user is able to open a new account
     When The user clicks on the Open New Account link
     Then The open account page title should be "Open New Account"
-    When The user selects  account type as "CHECKING" and account number as "17007"
+    When The user selects  account type as "CHECKING" and account number as "20226"
     And The user clicks on open new account button
     Then The account is opened
     Then The user successfully logged out and navigate to login page having title "ParaBank | Welcome | Online Banking"
@@ -16,7 +16,7 @@ Feature: Open New Account Validation for ParaBank application
   Scenario:Verify that user is able to perform end to end flow for open a new account
     When The user clicks on the Open New Account link
     Then The open account page title should be "Open New Account"
-    When The user selects  account type as "CHECKING" and account number as "170007"
+    When The user selects  account type as "CHECKING" and account number as "20226"
     And The user clicks on open new account button
     Then The account is opened
     When The user clicks on the new account number and navigate to "Account Details" page
@@ -32,7 +32,7 @@ Feature: Open New Account Validation for ParaBank application
   Scenario:Verify that a new opened account is listed under account overview
     When The user clicks on the Open New Account link
     Then The open account page title should be "Open New Account"
-    When The user selects  account type as "CHECKING" and account number as "13455"
+    When The user selects  account type as "CHECKING" and account number as "20226"
     And The user clicks on open new account button
     Then The account is opened
     When The user clicks on Account Overview page

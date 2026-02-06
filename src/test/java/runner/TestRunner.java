@@ -25,10 +25,11 @@ import org.testng.annotations.Parameters;
 
 
 public class TestRunner extends AbstractTestNGCucumberTests {
-
+    private static ThreadLocal<String> browserThreadLocal = new ThreadLocal<>();
     @Parameters("browser")
     @BeforeMethod(alwaysRun = true)
     public void setUpBrowser(@Optional("chrome") String browser){
+        browserThreadLocal.set(browser); // Store browser name in ThreadLocal
         BrowserContext.setBrowser(browser); //pass it to hooks
     }
 
