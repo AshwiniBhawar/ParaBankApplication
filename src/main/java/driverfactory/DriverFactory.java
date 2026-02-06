@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 import error.AppErrors;
 import exceptions.BrowserException;
@@ -16,6 +18,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class DriverFactory {
@@ -37,22 +40,34 @@ public class DriverFactory {
         log.info("Browser value is: "+browserName);
 
         optionsManager= new OptionsManager(prop);
-		
+        Boolean remoteExec=Boolean.parseBoolean(prop.getProperty("remote"));
+
 		switch(browserName.toLowerCase().trim()) {
 		case "chrome":
-            tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
-			break;
+            if(remoteExec) {
+                init_remoteDriver("chrome");
+            }
+            else {
+                tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+            }
+            break;
 
 		case "firefox":
-            tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
+            if(remoteExec) {
+                init_remoteDriver("firefox");
+            }
+            else {
+                tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
+            }
 			break;
 			
 		case "edge":
-            tlDriver.set(new EdgeDriver(optionsManager.getEdgeOptions()));
-			break;
-			
-		case "safari":
-            tlDriver.set(new SafariDriver());
+            if(remoteExec) {
+                init_remoteDriver("edge");
+            }
+            else {
+                tlDriver.set(new EdgeDriver(optionsManager.getEdgeOptions()));
+            }
 			break;
 		default:
             log.error("=========Invalid Broswer Passed :"+browserName+"==========");
@@ -72,12 +87,38 @@ public class DriverFactory {
         return tlDriver.get();
     }
 
+    /**
+     * initialize the remote driver
+     */
+    private void init_remoteDriver(String browserName) {
+        URL hubUrl;
+        try {
+            hubUrl=new URL(prop.getProperty("huburl"));
+            switch (browserName.trim().toLowerCase()) {
+                case "chrome":
+                    tlDriver.set(new RemoteWebDriver(hubUrl, optionsManager.getChromeOptions()));
+                    break;
+                case "firefox":
+                    tlDriver.set(new RemoteWebDriver(hubUrl, optionsManager.getFirefoxOptions()));
+                    break;
+                case "edge":
+                    tlDriver.set(new RemoteWebDriver(hubUrl, optionsManager.getEdgeOptions()));
+                    break;
+                default:
+                    log.error("=========Invalid Broswer Passed :" + browserName + "==========");
+                    throw new BrowserException(AppErrors.INVALID_BROWSER);
+            }
+        }
+        catch(MalformedURLException e){
+            throw new BrowserException(AppErrors.INVALID_BROWSER);
+        }
+    }
+
 	/**
 	 * This method is initializing the prop with properties file..
 	 * 
 	 * @return prop instance
 	 */
-	
 	public Properties initProp() {
         log.info("Initialize the properties");
 		prop= new Properties();
@@ -123,7 +164,6 @@ public class DriverFactory {
      * takescreenshot logic
      * @return
      */
-
     public static File getScreenshotFile() {
         TakesScreenshot ts = (TakesScreenshot) getDriver();
         return ts.getScreenshotAs(OutputType.FILE);

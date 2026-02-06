@@ -1,7 +1,7 @@
 Feature: Update Contact Info Validation for ParaBank application
 
   Background:
-    Given The user logins the application with a username "raj.kashyap22" and a password "rajkashyap1234"
+    Given The user logins the application with a username "raj.kashyap99" and a password "rajkashyap1234"
 
   @functional
   Scenario Outline::Verify that user is able to update the contact info
