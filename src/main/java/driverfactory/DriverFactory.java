@@ -40,7 +40,7 @@ public class DriverFactory {
         log.info("Browser value is: "+browserName);
 
         optionsManager= new OptionsManager(prop);
-        Boolean remoteExec=Boolean.parseBoolean(prop.getProperty("remote"));
+        boolean remoteExec=Boolean.parseBoolean(prop.getProperty("remote"));
 
 		switch(browserName.toLowerCase().trim()) {
 		case "chrome":
@@ -91,18 +91,16 @@ public class DriverFactory {
      * initialize the remote driver
      */
     private void init_remoteDriver(String browserName) {
-        URL hubUrl;
         try {
-            hubUrl=new URL(prop.getProperty("huburl"));
             switch (browserName.trim().toLowerCase()) {
                 case "chrome":
-                    tlDriver.set(new RemoteWebDriver(hubUrl, optionsManager.getChromeOptions()));
+                    tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsManager.getChromeOptions()));
                     break;
                 case "firefox":
-                    tlDriver.set(new RemoteWebDriver(hubUrl, optionsManager.getFirefoxOptions()));
+                    tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsManager.getFirefoxOptions()));
                     break;
                 case "edge":
-                    tlDriver.set(new RemoteWebDriver(hubUrl, optionsManager.getEdgeOptions()));
+                    tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsManager.getEdgeOptions()));
                     break;
                 default:
                     log.error("=========Invalid Broswer Passed :" + browserName + "==========");

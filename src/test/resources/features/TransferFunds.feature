@@ -1,4 +1,4 @@
-Feature: Open New Account Validation for ParaBank application
+Feature: Transfer Funds Validation for ParaBank application
 
   Background:
     Given The user logins the application with a username "raj.thakur33" and a password "rajthakur1234"

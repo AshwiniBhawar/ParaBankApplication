@@ -27,6 +27,16 @@ public class OptionsManager {
 		if(Boolean.parseBoolean(prop.getProperty("incognito"))) {
 			co.addArguments("--incognito");
 		}
+        if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+            co.setCapability("browserName", "chrome");
+//            co.addArguments(
+//                    "--no-sandbox",
+//                    "--disable-dev-shm-usage",
+//                    "--disable-gpu",
+//                    "--window-size=1920,1080"
+//            );
+
+        }
 		return co;
 	}
 			
@@ -34,11 +44,20 @@ public class OptionsManager {
 		fo=new FirefoxOptions();
         fo.addArguments("--guest");
 		if(Boolean.parseBoolean(prop.getProperty("headless"))) {
-			co.addArguments("--headless");
+            fo.addArguments("--headless");
 		}
 		if(Boolean.parseBoolean(prop.getProperty("incognito"))) {
-			co.addArguments("--incognito");
+            fo.addArguments("--incognito");
 		}
+        if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+            fo.setCapability("browserName", "firefox");
+            fo.addArguments(
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-gpu",
+                    "--window-size=1920,1080"
+            );
+        }
 		return fo;
 	}	
 	
@@ -46,11 +65,20 @@ public class OptionsManager {
 		eo=new EdgeOptions();
         eo.addArguments("--guest");
 		if(Boolean.parseBoolean(prop.getProperty("headless"))) {
-			co.addArguments("--headless=new");
+            eo.addArguments("--headless=new");
 		}
 		if(Boolean.parseBoolean(prop.getProperty("incognito"))) {
-			co.addArguments("--inprivate");
+            eo.addArguments("--inprivate");
 		}
+        if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+            eo.setCapability("browserName", "edge");
+            eo.addArguments(
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-gpu",
+                    "--window-size=1920,1080"
+            );
+        }
 		return eo;
 	}
 

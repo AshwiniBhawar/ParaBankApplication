@@ -3,6 +3,7 @@ package steps;
 import driverfactory.DriverFactory;
 import io.cucumber.java.*;
 import io.cucumber.java.Scenario;
+import io.qameta.allure.Allure;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +25,7 @@ public class Hooks {
         df= new DriverFactory();
         prop = df.initProp();
         String browserName= BrowserContext.getBrowser();
+
         log.info("Browser name is- "+ browserName);
 
         if(browserName !=null){

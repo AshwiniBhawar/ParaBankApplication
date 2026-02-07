@@ -6,7 +6,7 @@ Feature: Registration for ParaBank application
    When The user fetches the page title
    Then The page title should be "ParaBank | Register for Free Online Account Access"
 
-  @register @regression @smoke
+  @register @regression
   Scenario Outline: Complete a registration form for ParaBank application
     Given The user is on login page and clicks on register link
     When The user fetches the registration form title
