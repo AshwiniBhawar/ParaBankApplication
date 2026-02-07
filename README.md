@@ -10,7 +10,8 @@ This framework automates a web application using Selenium WebDriver, Java, TestN
 - **Maven-** Dependency management
 - **TestNG-** Testing framework(Parallel execution)
 - **Log4j-** Logging
-- **Allure, ChainTest, Cucumber-** Reports
+- **Cucumber, Allure, ChainTest-** Reports
+- **Dockerized Grid-** Remote Execution
 
 ## Scenarios Automated
 
@@ -30,14 +31,15 @@ e)Update contact information
 
 ## Reports
 
-Reports: After execution, a detailed HTML report will be generated at 
+Reports: After execution, a detailed HTML/JSON report will be generated at 
 
-1)./allure-results directory.
+1)./target/cucumber-reports directory
+
+2)./allure-results directory.
 The report contains information on test cases executed, passed, failed, and skipped, along with screenshots for failed tests.
 
-2)./target/chaintest directory
+3)./target/chaintest directory
 
-3)./target/cucumber-reports directory
 
 ## Logs
 Logs are created during the test execution and stored in the ./target/logs/ directory.
@@ -48,7 +50,7 @@ Logs are created during the test execution and stored in the ./target/logs/ dire
 
 2)Import into IDE-IntelliJ/Eclipse. Open IntelliJ/Eclipse > Import as a Maven project
 
-3)Run Test Suite using testng.xml through IntelliJ/Eclipse or CMD using below command- mvn clean test
+3)Run Test Suite using testng.xml through IntelliJ/Eclipse or CMD using below command- mvn clean test -Dsurefire.suiteXmlFiles=<filePath> -Denv=<envName>
 
 4)Generate Allure Report: Open CMD > Go to the project directory > run below command- allure serve allure-results
 
